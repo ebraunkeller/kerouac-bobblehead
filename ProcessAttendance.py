@@ -35,7 +35,6 @@ with open(OutFile,'a+b') as csvout:
     for row in reader:
         output = [row[0],row[1],'ABS',calday(row[0]), schoolyear(row[0])]
         for crow in Creader:
-#            print 'date:  ',row[0], 'calendar date:  ',crow[0]
             if crow[0] == row[0] :              
                 if crow[1]=='TRUE': wr.writerow(output)
                 break

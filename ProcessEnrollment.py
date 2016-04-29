@@ -21,7 +21,7 @@ def schoolyear(date):
 
 # Files are hardwired for testing    
 # PCG Enrollment
-EnrollFile ="C:\Users\Elaine\Documents\BKL\Lowell\\2016-2017\StudentEnrollmentPCG.csv"
+EnrollFile ="C:\Users\Elaine\Documents\BKL\Lowell\\2016-2017\StudentEnrollmentNew.csv"
 # Calendar dump
 CalendFile ="C:\Users\Elaine\Documents\BKL\Lowell\\2016-2017\Calendar.csv"
 
@@ -46,7 +46,7 @@ for Crow in Creader:
         if Crow[1]=='TRUE': # school day
             print "Processing Calendar day:  ", Crow[0]    
             cal_day =  cal_date.strftime("%a")
-            next(Ereader)   #skip header row in enrollment file
+#            next(Ereader)   #skip header row in enrollment file - non PCG file doesn't have a header
 # Work through every enrollment record for the period selected
             for Erow in Ereader:    #each student
                 wrow=[]
