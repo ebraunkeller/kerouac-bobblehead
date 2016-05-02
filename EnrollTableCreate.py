@@ -33,11 +33,11 @@ def WriteGrid():
     
 Grid=[] # LASID, StartDate, EndDate
 # Open the raw file    
-EnrollFile ="C:\Users\Elaine\Documents\BKL\Lowell\\2016-2017\StudentEnrollment.csv"
+EnrollFile ="/Users/Elaine/Documents/Lowell/RawData/StudentEnrollment.csv"
 Ecsvfile = open(EnrollFile,'rb')
 Ereader = csv.reader(Ecsvfile)
 
-Outfile = "C:\Users\Elaine\Documents\BKL\Lowell\\2016-2017\TableauFormat\Enrollment.csv"
+Outfile = "/Users/Elaine/Documents/Lowell/TableauFormat/Enrollment.csv"
 Wcsvfile = open(Outfile,'a+b')
 wr= csv.writer(Wcsvfile, delimiter=',')
 
@@ -47,11 +47,15 @@ Start=datetime.strptime("09/01/2004",'%m/%d/%Y')
 #Main loop row[0]=LASID, row[1]=Date, row[2] = Description row[3] = Code row[4] = Status
 try:
     Count = 0
+    print ' '
     sys.stdout.write('Processing .')
+    sys.stdout.flush()
+
     for row in Ereader:
         Count +=1
         if(Count==10000):
             sys.stdout.write('.')
+            sys.stdout.flush()
             Count =0
         if datetime.strptime(row[1],'%m/%d/%Y')>=Start:
             if row[0] not in [elem[0] for elem in Grid]:  #elem[0] is the Lasid
