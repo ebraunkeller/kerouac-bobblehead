@@ -15,3 +15,4 @@ type ProcessedAttend.csv, ProcessedEnroll.csv > DistrictAttend.csv
 
 cd C:\Users\Elaine\Documents\BKL\Lowell\2016-2017\Scripts
 python ProcPublicView.py
+python ProcStudentView.py
