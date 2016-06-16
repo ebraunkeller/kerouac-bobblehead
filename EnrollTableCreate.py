@@ -1,6 +1,8 @@
 #EnrollTableCreate
 #Creates a table of lasid, start date, end date for all
-# students. Start with the linear enrollment table.
+# Input files: StudentEnrollment.csv which is extracted from X2
+# Output file: Enrollment.csv which has: studentID, startDate, endDate for each continuous enrollment
+# This file becomes the input for ProcessAttendance.py
 import csv, string, time, sys
 from datetime import datetime
 

@@ -2,6 +2,9 @@
 # so that they match the enrollment file: date, lasid, status (ABS), day, school year
 # also, clean the bad data. Many absence records are on days not in the calendar. Check the date
 # of the absence against the calendar and delete bad records
+# Input files: Attendance.csv - pulled from X2 (attendance records)
+#              NewCalendar.csv - pulled from X2, must be updated annually to get previous year and current year
+# Output File: ProcessedAttend.csv
 import csv, time
 from datetime import datetime
 
@@ -19,7 +22,7 @@ def calday(date):
 
 AttFile = "C:\Users\Elaine\Documents\BKL\Lowell\\2016-2017\Attendance.csv"
 OutFile = "C:\Users\Elaine\Documents\BKL\Lowell\\2016-2017\TableauFormat\ProcessedAttend.csv"
-CalendFile ="C:\Users\Elaine\Documents\BKL\Lowell\\2016-2017\Calendar.csv"
+CalendFile ="C:\Users\Elaine\Documents\BKL\Lowell\\2016-2017\NewCalendar.csv"
 
 csvfile=open(AttFile,'rb')
 reader=csv.reader(csvfile)
@@ -29,13 +32,14 @@ Creader = csv.reader(Ccsvfile)
 
 with open(OutFile,'a+b') as csvout:
     wr=csv.writer(csvout,delimiter=',')
-    wr.writerow(['Date','Lasid','Status','Day','SchoolYear']) 
+    wr.writerow(['Date','Lasid','Status','Day','SchoolYear','Term']) 
 # skip all the headers
     next(reader)
     for row in reader:
         output = [row[0],row[1],'ABS',calday(row[0]), schoolyear(row[0])]
         for crow in Creader:
-            if crow[0] == row[0] :              
+            if crow[0] == date_func(row[0]) : 
+                output.append(crow[2])
                 if crow[1]=='TRUE': wr.writerow(output)
                 break
         Ccsvfile.seek(0)
