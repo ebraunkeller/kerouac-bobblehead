@@ -11,7 +11,8 @@ del NewCalendar.csv
 cd C:\Users\Elaine\Documents\BKL\Lowell\2016-2017\Scripts
 REM  Args: start_Prev_year  end_prev_year  start_current_year end_current_Year
 REM change dates at start of academic year
-python CalendarDay.py 08/26/2014 06/23/2015 09/01/2015 06/20/2016
+REM Last year: python CalendarDay.py 08/26/2014 06/23/2015 09/01/2015 06/20/2016
+python CalendarDay.py 09/01/2015 06/20/2016 08/30/2016 06/22/2017
 python EnrollTableCreate.py
 python ProcessAttendance.py
 python ProcessEnrollment.py
